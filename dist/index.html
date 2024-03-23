@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="m-5 font-arial">
+    <div class="container mx-auto rounded-lg bg-form p-6 shadow-lg">
+      <h1 class="mb-6 text-center text-3xl font-bold">Expense Tracker</h1>
+      <form id="expense-form" class="mb-6 flex items-center justify-center">
+        <input
+          type="text"
+          id="expense-name"
+          placeholder="Expense Name"
+          required
+          class="mr-2 rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none"
+        />
+        <input
+          type="number"
+          min="0"
+          step="0.01"
+          id="expense-amount"
+          placeholder="Amount"
+          required
+          class="mr-2 rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="rounded-lg bg-green-500 px-6 py-2 text-white hover:bg-green-600 focus:bg-green-600 focus:outline-none"
+        >
+          Add Expense
+        </button>
+      </form>
+      <div class="expense-table overflow-hidden rounded-lg shadow-lg">
+        <table class="w-full">
+          <thead class="border-y border-gray-200">
+            <tr>
+              <th class="bg-form px-2 py-2 text-left">Expense Name</th>
+              <th class="bg-form px-2 py-2 text-left">Amount</th>
+              <th colspan="2" class="bg-form px-2 py-2 text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-line" id="expense-list"></tbody>
+        </table>
+        <div class="total-amount px-4 py-2 text-right">
+          <strong>Total:</strong> $<span id="total-amount">0</span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="edit-overlay invisible fixed left-0 top-0 h-full w-full bg-black bg-opacity-50"
+      id="edit-overlay"
+    ></div>
+    <form
+      id="edit-form"
+      class="z-2 invisible absolute left-1/2 top-1/2 flex max-w-lg -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center rounded-lg border border-black bg-white p-6 shadow-lg"
+    >
+      <h2 id="name" class="mb-4 text-xl font-bold"></h2>
+      <input
+        type="text"
+        id="edit-name"
+        placeholder="New expense name"
+        required
+        class="mb-4 w-full rounded-lg border border-gray-300 px-4 py-2"
+      />
+      <input
+        type="number"
+        min="0"
+        step="0.01"
+        id="edit-amount"
+        placeholder="New amount"
+        required
+        class="mb-4 w-full rounded-lg border border-gray-300 px-4 py-2"
+      />
+      <button
+        type="submit"
+        id="edit-btn"
+        class="m-auto rounded-lg bg-green-500 px-6 py-2 text-white hover:bg-green-600 focus:bg-green-600 focus:outline-none"
+      >
+        Edit
+      </button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-x-circle close-icon absolute right-0 top-0 mr-2 mt-2 h-8 w-8 hover:stroke-red-600"
+        id="cancel-svg"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="15" y1="9" x2="9" y2="15"></line>
+        <line x1="9" y1="9" x2="15" y2="15"></line>
+      </svg>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
